@@ -211,10 +211,10 @@ const Dashboard = () => {
                     </div>
                     <div className="card-body">
                         <ul className="flex flex-col gap-5">
-                            <li className="flex items-center justify-between border-l-[5px] border-orange-500 ps-[10px]">
+                            <li className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
-                                    <span className="rounded-[5px] bg-emerald-200 text-emerald-500 text-[1rem] font-medium p-[10px] flex items-center justify-center flex-col">
-                                        <h6 className="text-[1.25rem] font-medium text-emerald">10</h6>
+                                    <span className="rounded-[5px] bg-emerald-200 text-emerald-500 text-[1rem] font-medium p-[10px] flex items-center justify-center flex-col w-[60px] h-[60px]">
+                                        <h6 className="text-[1.25rem] font-medium text-emerald leading-6">10</h6>
                                         <p className="text-[1] font-regular text-emerald">Jan</p>
                                     </span>
 
