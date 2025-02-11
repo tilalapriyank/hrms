@@ -1,0 +1,6 @@
+Roles:
+    Admin/HR
+    Employees
+    Client
+    accountant
+    team leader
