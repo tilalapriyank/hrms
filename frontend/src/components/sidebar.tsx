@@ -53,7 +53,7 @@ function Sidebar() {
             <li className="flex items-center gap-2 hover:bg-secondary-500 p-4">
               <RiUser2Line
                 className="text-white text-[20px]" />
-              <NavLink to="/empolyess" className="w-full text-white font-regular text-[16px]">Employees</NavLink>
+              <NavLink to="/empolyee" className="w-full text-white font-regular text-[16px]">Employees</NavLink>
             </li>
             <li className="flex items-center gap-2 hover:bg-secondary-500 p-4">
               <RiMedal2Line

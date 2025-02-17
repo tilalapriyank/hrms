@@ -28,4 +28,8 @@
   .card-body{
     @apply p-[20px];
   }
+
+    .card-footer {
+      @apply pb-[20px] px-[20px];
+    }
 }

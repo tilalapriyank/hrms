@@ -3,6 +3,8 @@ import Sidebar from "../components/sidebar";
 import Header from "../components/header";
 import Topbar from "../components/topbar";
 import Dashboard from "../components/dashboard";
+import Employee from "../components/Employee";
+import AddEmployee from "../components/AddEmployee";
 
 
 const DashboardLayout = () => {
@@ -17,6 +19,8 @@ const DashboardLayout = () => {
                     <Topbar />
                     <Routes>
                         <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/empolyee" element={<Employee />} />
+                        <Route path="/empolyee/add" element={<AddEmployee />} />
                     </Routes>
                 </main>
             </div>

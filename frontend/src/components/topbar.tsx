@@ -7,6 +7,7 @@ function Topbar() {
           <div className="topbar-action flex items-center gap-2">
             <button className="btn-primary">Total employee 50</button>
             <button className="btn-outline">Apply leave</button>
+            <button className="btn-primary">Add Employee</button>
           </div>
         </div>
       </div>
