@@ -5,14 +5,15 @@ import Topbar from "../components/topbar";
 import Dashboard from "../components/dashboard";
 import Employee from "../components/Employee";
 import AddEmployee from "../components/AddEmployee";
+import ViewEmployee from "../components/ViewEmployee";
 
 
 const DashboardLayout = () => {
     return (
-        <div className="flex bg-gray-100">
+        <div className="flex h-screen bg-gray-100">
             <Sidebar />
 
-            <div className="flex flex-col flex-1">
+            <div className="flex-1 overflow-y-auto h-full ml-64">
                 <Header />
 
                 <main className="p-6">
@@ -21,6 +22,7 @@ const DashboardLayout = () => {
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/empolyee" element={<Employee />} />
                         <Route path="/empolyee/add" element={<AddEmployee />} />
+                        <Route path="/empolyee/view/1" element={<ViewEmployee />} />
                     </Routes>
                 </main>
             </div>

@@ -1,23 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Step1 from "./AddEmployeeForm/step1";
 import Step2 from "./AddEmployeeForm/step2";
 import Step3 from "./AddEmployeeForm/step3";
 
 const Multiform = () => {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    position: "",
-    department: "",
-  });
+  const [formData, setFormData] = useState({});
 
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 

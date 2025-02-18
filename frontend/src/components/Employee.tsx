@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { FiEye } from "react-icons/fi";
+import { FiEdit2 } from "react-icons/fi";
+import { RiDeleteBinLine } from "react-icons/ri";
+import ViewModal from './ViewModal';
 
 const Employee = () => {
   const initialData = [
@@ -18,11 +21,15 @@ const Employee = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage] = useState(3);
   const [filterText, setFilterText] = useState('');
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
 
   const handleSort = (column) => {
-    const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
-    setSortOrder(newSortOrder);
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     setSortBy(column);
+  };
+
+  const handleDelete = (index) => {
+    setData(prevData => prevData.filter((_, i) => i !== index));
   };
 
   const filteredData = data.filter(item =>
@@ -32,27 +39,13 @@ const Employee = () => {
   );
 
   const sortedData = [...filteredData].sort((a, b) => {
-    if (sortBy === 'name') {
-      return sortOrder === 'asc'
-        ? a.name.localeCompare(b.name)
-        : b.name.localeCompare(a.name);
-    } else if (sortBy === 'email') {
-      return sortOrder === 'asc'
-        ? a.email.localeCompare(b.email)
-        : b.email.localeCompare(a.email);
-    } else {
-      return sortOrder === 'asc'
-        ? a.role.localeCompare(b.role)
-        : b.role.localeCompare(a.role);
-    }
+    return sortOrder === 'asc'
+      ? a[sortBy].localeCompare(b[sortBy])
+      : b[sortBy].localeCompare(a[sortBy]);
   });
 
   const startIndex = (currentPage - 1) * rowsPerPage;
   const paginatedData = sortedData.slice(startIndex, startIndex + rowsPerPage);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
 
   return (
     <div className='card'>
@@ -70,26 +63,29 @@ const Employee = () => {
         <table className="min-w-full table-auto border-collapse">
           <thead>
             <tr>
-              <th className="px-6 py-3 text-left text-[1rem] font-bold text-heading cursor-pointer" onClick={() => handleSort('name')}>
-                Name
-                {sortBy === 'name' && (sortOrder === 'asc' ? ' ▲' : ' ▼')}
+              <th className="px-6 py-3 text-left text-[1rem] font-bold cursor-pointer" onClick={() => handleSort('name')}>
+                Name {sortBy === 'name' && (sortOrder === 'asc' ? ' ▲' : ' ▼')}
               </th>
-              <th className="px-6 py-3 text-left text-[1rem] font-bold text-heading cursor-pointer" onClick={() => handleSort('email')}>
-                Email
-                {sortBy === 'email' && (sortOrder === 'asc' ? ' ▲' : ' ▼')}
+              <th className="px-6 py-3 text-left text-[1rem] font-bold cursor-pointer" onClick={() => handleSort('email')}>
+                Email {sortBy === 'email' && (sortOrder === 'asc' ? ' ▲' : ' ▼')}
               </th>
-              <th className="px-6 py-3 text-left text-[1rem] font-bold text-heading cursor-pointer" onClick={() => handleSort('role')}>
-                Role
-                {sortBy === 'role' && (sortOrder === 'asc' ? ' ▲' : ' ▼')}
+              <th className="px-6 py-3 text-left text-[1rem] font-bold cursor-pointer" onClick={() => handleSort('role')}>
+                Role {sortBy === 'role' && (sortOrder === 'asc' ? ' ▲' : ' ▼')}
               </th>
+              <th className="px-6 py-3 text-left text-[1rem] font-bold">Actions</th>
             </tr>
           </thead>
           <tbody>
             {paginatedData.map((item, index) => (
               <tr key={index} className="border-t border-gray-200">
-                <td className="px-6 py-4 text-[1rem] text-text">{item.name}</td>
-                <td className="px-6 py-4 text-[1rem] text-text">{item.email}</td>
-                <td className="px-6 py-4 text-[1rem] text-text">{item.role}</td>
+                <td className="px-6 py-4">{item.name}</td>
+                <td className="px-6 py-4">{item.email}</td>
+                <td className="px-6 py-4">{item.role}</td>
+                <td className="px-6 py-4 flex gap-2">
+                  <button onClick={() => setSelectedEmployee(item)} className="p-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300"><FiEye className='text-primary' /></button>
+                  <button className="p-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300"><FiEdit2 className='text-primary' /></button>
+                  <button onClick={() => handleDelete(index)} className="p-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300"><RiDeleteBinLine className='text-primary' /></button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -98,24 +94,24 @@ const Employee = () => {
 
       <div className="flex gap-5 card-footer">
         <button
-          onClick={() => handlePageChange(currentPage - 1)}
+          onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}
-          className="p-2 bg-primary-500 text-gray-700 rounded disabled:opacity-50">
-          <IoIosArrowBack className='text-white' />
-
+          className="p-2 bg-gray-300 rounded disabled:opacity-50">
+          <IoIosArrowBack />
         </button>
         <div className="flex items-center">
           Page {currentPage} of {Math.ceil(filteredData.length / rowsPerPage)}
         </div>
         <button
-          onClick={() => handlePageChange(currentPage + 1)}
+          onClick={() => setCurrentPage(currentPage + 1)}
           disabled={currentPage === Math.ceil(filteredData.length / rowsPerPage)}
-          className="p-2 bg-primary-500 text-gray-700 rounded disabled:opacity-50">
-          <IoIosArrowForward className='text-white' />
-
+          className="p-2 bg-gray-300 rounded disabled:opacity-50">
+          <IoIosArrowForward />
         </button>
-      </div >
-    </div >
+      </div>
+
+      {selectedEmployee && <ViewModal employee={selectedEmployee} onClose={() => setSelectedEmployee(null)} />}
+    </div>
   );
 };
 

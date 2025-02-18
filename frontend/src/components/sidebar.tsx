@@ -13,7 +13,7 @@ import { NavLink } from "react-router-dom";
 function Sidebar() {
   return (
     <>
-      <div className="sidebar bg-primary-500 w-[15%]">
+      <div className="sidebar bg-primary-500 w-64 fixed h-full">
         <div className="sidebar-menu flex flex-col gap-3">
           <div className="side-menu-logo flex items-center justify-between p-3">
             <div className="logo flex items-center gap-3">
