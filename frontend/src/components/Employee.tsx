@@ -3,7 +3,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FiEye } from "react-icons/fi";
 import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
-import ViewModal from './ViewModal';
+import DeleteModal from './DeleteModal';
 
 const Employee = () => {
   const initialData = [
@@ -19,9 +19,9 @@ const Employee = () => {
   const [sortOrder, setSortOrder] = useState('asc');
   const [sortBy, setSortBy] = useState('name');
   const [currentPage, setCurrentPage] = useState(1);
-  const [rowsPerPage] = useState(3);
+  const [rowsPerPage] = useState(12);
   const [filterText, setFilterText] = useState('');
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [deletedEmployee, deleteSelectedEmployee] = useState(null);
 
   const handleSort = (column) => {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -63,16 +63,16 @@ const Employee = () => {
         <table className="min-w-full table-auto border-collapse">
           <thead>
             <tr>
-              <th className="px-6 py-3 text-left text-[1rem] font-bold cursor-pointer" onClick={() => handleSort('name')}>
+              <th className="px-6 py-3 text-left text-[1rem] font-medium cursor-pointer bg-primary-500 text-white" onClick={() => handleSort('name')}>
                 Name {sortBy === 'name' && (sortOrder === 'asc' ? ' ▲' : ' ▼')}
               </th>
-              <th className="px-6 py-3 text-left text-[1rem] font-bold cursor-pointer" onClick={() => handleSort('email')}>
+              <th className="px-6 py-3 text-left text-[1rem] font-medium cursor-pointer bg-primary-500 text-white" onClick={() => handleSort('email')}>
                 Email {sortBy === 'email' && (sortOrder === 'asc' ? ' ▲' : ' ▼')}
               </th>
-              <th className="px-6 py-3 text-left text-[1rem] font-bold cursor-pointer" onClick={() => handleSort('role')}>
+              <th className="px-6 py-3 text-left text-[1rem] font-medium cursor-pointer bg-primary-500 text-white" onClick={() => handleSort('role')}>
                 Role {sortBy === 'role' && (sortOrder === 'asc' ? ' ▲' : ' ▼')}
               </th>
-              <th className="px-6 py-3 text-left text-[1rem] font-bold">Actions</th>
+              <th className="px-6 py-3 text-left text-[1rem] font-medium bg-primary-500 text-white">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -84,7 +84,7 @@ const Employee = () => {
                 <td className="px-6 py-4 flex gap-2">
                   <button onClick={() => setSelectedEmployee(item)} className="p-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300"><FiEye className='text-primary' /></button>
                   <button className="p-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300"><FiEdit2 className='text-primary' /></button>
-                  <button onClick={() => handleDelete(index)} className="p-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300"><RiDeleteBinLine className='text-primary' /></button>
+                  <button onClick={() => deleteSelectedEmployee(index + 1)} className="p-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300"><RiDeleteBinLine className='text-primary' /></button>
                 </td>
               </tr>
             ))}
@@ -110,7 +110,7 @@ const Employee = () => {
         </button>
       </div>
 
-      {selectedEmployee && <ViewModal employee={selectedEmployee} onClose={() => setSelectedEmployee(null)} />}
+      {deletedEmployee && <DeleteModal employee={deleteSelectedEmployee} onClose={() => deleteSelectedEmployee(null)} />}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import Dashboard from "../components/dashboard";
 import Employee from "../components/Employee";
 import AddEmployee from "../components/AddEmployee";
 import ViewEmployee from "../components/ViewEmployee";
+import Leave from "../components/Leave";
 
 
 const DashboardLayout = () => {
@@ -23,6 +24,7 @@ const DashboardLayout = () => {
                         <Route path="/empolyee" element={<Employee />} />
                         <Route path="/empolyee/add" element={<AddEmployee />} />
                         <Route path="/empolyee/view/1" element={<ViewEmployee />} />
+                        <Route path="/leave" element={<Leave />} />
                     </Routes>
                 </main>
             </div>

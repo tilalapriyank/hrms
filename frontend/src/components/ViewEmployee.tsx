@@ -50,7 +50,7 @@ const ViewEmployee = () => {
                                             </label>
                                         </div>
                                         <div className="flex flex-col gap-5 w-[80%]">
-                                            <div className='flex flex-col gap-5'>
+                                            <div className='flex flex-col gap-5 p-5 bg-primary-50 bg-opacity-[0.2] rounded'>
                                                 <h3 className='text-heading font-bold text-[1.25rem]'>Employee Details</h3>
                                                 <div className='grid grid-cols-3 gap-5'>
                                                     <div className="flex flex-col gap-2">
@@ -75,7 +75,7 @@ const ViewEmployee = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='flex flex-col gap-5'>
+                                            <div className='flex flex-col gap-5 p-5 bg-primary-50 bg-opacity-[0.2] rounded'>
                                                 <h3 className='text-heading font-bold text-[1.25rem]'>Personal Details</h3>
                                                 <div className='grid grid-cols-3 gap-6'>
                                                     <div className="flex flex-col gap-2">
@@ -97,7 +97,7 @@ const ViewEmployee = () => {
 
                                                 </div>
                                             </div>
-                                            <div className='flex flex-col gap-5'>
+                                            <div className='flex flex-col gap-5 p-5 bg-primary-50 bg-opacity-[0.2] rounded'>
                                                 <h3 className='text-heading font-bold text-[1.25rem]'>Contact Details</h3>
                                                 <div className='flex flex-col gap-4'>
                                                     <h3 className='text-heading font-bold text-[18px]'>Present address</h3>
@@ -185,7 +185,7 @@ const ViewEmployee = () => {
                                                 </label>
                                             </div>
                                             <div className="flex flex-col gap-6 w-[80%]">
-                                                <div className='flex flex-col gap-5'>
+                                                <div className='flex flex-col gap-5 p-5 bg-primary-50 bg-opacity-[0.2] rounded'>
                                                     <h3 className='text-heading font-bold text-[1.25rem]'>Documents Details</h3>
                                                     <div className='grid grid-cols-1 gap-6'>
                                                         <div className="flex flex-col gap-2">
@@ -198,7 +198,7 @@ const ViewEmployee = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className='flex flex-col gap-5'>
+                                                <div className='flex flex-col gap-5 p-5 bg-primary-50 bg-opacity-[0.2] rounded'>
                                                     <h3 className='text-heading font-bold text-[1.25rem]'>Resume</h3>
                                                     <div className='grid grid-cols-1 gap-6'>
                                                         <div className="flex flex-col gap-2">
@@ -222,34 +222,32 @@ const ViewEmployee = () => {
                             <>
                                 <div className='card'>
                                     <div className='card-body'>
-                                        <form>
-                                            <div className="flex flex-col gap-6">
-                                                <div className='flex flex-col gap-5'>
-                                                    <h3 className='text-heading font-bold text-[1.25rem]'>Bank Account Details</h3>
-                                                    <div className='grid grid-cols-2 gap-6'>
-                                                        <div className="flex flex-col gap-2">
-                                                            <label className="text-[16px] font-medium text-heading leading-5 relative before:absolute before:content-[&quot;*&quot;] before:text-red before:right-[-11px] before:top-0 before:bottom-0 w-max">Bank Name</label>
-                                                            <span className="text-heading">Indian Bank</span>
-                                                        </div>
-                                                        <div className="flex flex-col gap-2">
-                                                            <label className="text-[16px] font-medium text-heading leading-5 relative before:absolute before:content-[&quot;*&quot;] before:text-red before:right-[-11px] before:top-0 before:bottom-0 w-max">Branch Name</label>
-                                                            <span className="text-heading">Ahemdabad</span>
-                                                        </div>
-                                                        <div className="flex flex-col gap-2 col-span-2">
-                                                            <label className="text-[16px] font-medium text-heading leading-5 relative before:absolute before:content-[&quot;*&quot;] before:text-red before:right-[-11px] before:top-0 before:bottom-0 w-max">Account Holder Name</label>
-                                                            <span className="text-heading">John Walter</span>
-                                                        </div>
-                                                        <div className="flex flex-col gap-2">
-                                                            <label className="text-[16px] font-medium text-heading leading-5 relative before:absolute before:content-[&quot;*&quot;] before:text-red before:right-[-11px] before:top-0 before:bottom-0 w-max">Account Number</label>
-                                                            <span className="text-heading">23957845691</span>
-                                                        </div>
-                                                        <div className="flex flex-col gap-2">
-                                                            <label className="text-[16px] font-medium text-heading leading-5 relative before:absolute before:content-[&quot;*&quot;] before:text-red before:right-[-11px] before:top-0 before:bottom-0 w-max">IFSC Code</label>
-                                                            <span className="text-heading">ISFC57Y541</span>
-                                                        </div>
-                                                    </div>
+                                        <form className="flex flex-col gap-5 p-5 bg-primary-50 bg-opacity-[0.2] rounded">
+
+                                            <h3 className='text-heading font-bold text-[1.25rem]'>Bank Account Details</h3>
+                                            <div className='grid grid-cols-2 gap-6'>
+                                                <div className="flex flex-col gap-2">
+                                                    <label className="text-[16px] font-medium text-heading leading-5 relative before:absolute before:content-[&quot;*&quot;] before:text-red before:right-[-11px] before:top-0 before:bottom-0 w-max">Bank Name</label>
+                                                    <span className="text-heading">Indian Bank</span>
+                                                </div>
+                                                <div className="flex flex-col gap-2">
+                                                    <label className="text-[16px] font-medium text-heading leading-5 relative before:absolute before:content-[&quot;*&quot;] before:text-red before:right-[-11px] before:top-0 before:bottom-0 w-max">Branch Name</label>
+                                                    <span className="text-heading">Ahemdabad</span>
+                                                </div>
+                                                <div className="flex flex-col gap-2 col-span-2">
+                                                    <label className="text-[16px] font-medium text-heading leading-5 relative before:absolute before:content-[&quot;*&quot;] before:text-red before:right-[-11px] before:top-0 before:bottom-0 w-max">Account Holder Name</label>
+                                                    <span className="text-heading">John Walter</span>
+                                                </div>
+                                                <div className="flex flex-col gap-2">
+                                                    <label className="text-[16px] font-medium text-heading leading-5 relative before:absolute before:content-[&quot;*&quot;] before:text-red before:right-[-11px] before:top-0 before:bottom-0 w-max">Account Number</label>
+                                                    <span className="text-heading">23957845691</span>
+                                                </div>
+                                                <div className="flex flex-col gap-2">
+                                                    <label className="text-[16px] font-medium text-heading leading-5 relative before:absolute before:content-[&quot;*&quot;] before:text-red before:right-[-11px] before:top-0 before:bottom-0 w-max">IFSC Code</label>
+                                                    <span className="text-heading">ISFC57Y541</span>
                                                 </div>
                                             </div>
+
                                         </form>
                                     </div>
                                 </div>
